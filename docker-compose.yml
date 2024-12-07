@@ -1,0 +1,27 @@
+services:
+  postgres:
+    build: .
+    container_name: postgres_container
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data  # Монтируем том для данных
+    environment:
+      POSTGRES_USER: enzzo
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: mybase
+    networks:
+      my_network:
+        ipv4_address: 192.168.1.105  # Статический IP для контейнера
+    restart: always  # Автоматически перезапускать контейнер
+
+volumes:
+  pg_data:  # Это том, который будет использоваться для хранения данных PostgreSQL
+
+networks:
+  my_network:
+    driver: bridge  # Используем драйвер bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24  # Сетевой диапазон
+
