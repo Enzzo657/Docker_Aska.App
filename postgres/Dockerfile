@@ -7,8 +7,8 @@ ENV POSTGRES_PASSWORD=123456
 ENV POSTGRES_DB=mybase
 
 # Копируем конфиги
-COPY configs/postgresql.conf /etc/postgresql/postgresql.conf
-COPY configs/pg_hba.conf /etc/postgresql/pg_hba.conf
+COPY /configs/postgresql.conf /etc/postgresql/postgresql.conf
+COPY /configs/pg_hba.conf /etc/postgresql/pg_hba.conf
 
 # Применяем пользовательские конфиги
 CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <style>
+        /* Основной стиль страницы */
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-image: url('static/images/ig2.jpeg'); /* Фон с картинкой black1 */
+            background-size: cover; /* Картинка будет покрывать весь экран */
+            background-position: center; /* Центрируем картинку */
+            background-attachment: fixed; /* Картинка остается на месте при прокрутке */
+        }
+
+        /* Контейнер для формы в правом верхнем углу */
+        .login-container {
+            position: absolute;
+            top: 40%; /* Сдвигаем форму чуть ниже */
+            right: 17%; /* Сдвигаем форму от правой границы */
+            width: 300px; /* Ширина формы */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Форма входа */
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.8); /* Белый фон с прозрачностью */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Тень для эффекта глубины */
+            width: 100%; /* Ширина формы */
+            text-align: center;
+            backdrop-filter: blur(5px); /* Размытие фона за формой */
+        }
+
+        /* Заголовок */
+        h1 {
+            color: darkred ; /* Белый цвет заголовка */
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        /* Инпуты и кнопки */
+        .login-form input, .login-form button {
+            width: 100%; /* Ширина 100% */
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 25px; /* Округление кнопки и полей ввода */
+            border: 1px solid #ddd; /* Легкая граница */
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        .login-form input {
+            background-color: #f9f9f9; /* Светлый фон для полей */
+        }
+
+        .login-form button {
+            background-color: darkred; /* Яркий красный цвет кнопки */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1.2em; /* Увеличим размер текста на кнопке */
+        }
+
+        .login-form button:hover {
+            background-color: #D50000; /* Темно-красный при наведении */
+        }
+
+        .login-form input:focus, .login-form button:focus {
+            outline: none; /* Убираем обводку при фокусе */
+            border-color: #FF0000; /* Красная граница при фокусе */
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 480px) {
+            .login-container {
+                width: 80%;
+                height: auto;
+                right: 0; /* Убираем отступ справа на мобильных */
+            }
+
+            .login-form {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Контейнер для формы в правом верхнем углу -->
+    <div class="login-container">
+        <!-- Форма входа -->
+        <form class="login-form" action="/login" method="post">
+            <h1>AskaStore</h1>
+            <input type="text" name="username" placeholder="Логин" required>
+            <input type="password" name="password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+</body>
+</html>
