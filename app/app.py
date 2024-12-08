@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, session, flash
+from flask import Flask, request, render_template, redirect, url_for, session, flash, abort
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import secrets
@@ -28,6 +28,17 @@ class Client(db.Model):
 # Предустановленный логин и пароль администратора
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD_HASH = os.getenv('ADMIN_PASSWORD_HASH')
+
+
+#Список разрешенных IP-адресов для доступа
+ALLOWED_IPS = ['192.168.0.104']  # Добавь сюда разрешенные IP
+
+# Middleware для ограничения доступа по IP
+@app.before_request
+def limit_remote_addr():
+    #Middleware для ограничения доступа.
+    if request.remote_addr not in ALLOWED_IPS:
+        abort(403)  # Отказ в доступе
 
 # Проверка пароля администратора
 def check_admin_password(password):
